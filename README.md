@@ -18,5 +18,8 @@ $ git add .buildpacks
 $ git commit -m 'Add multi-buildpack'
 ```
 
+Please note that this buildpack is only compatible with the cedar-14
+stack. You can use `heroku stack:set cedar-14` to set the correct stack.
+
 [0]: http://devcenter.heroku.com/articles/buildpacks
 [1]: http://wkhtmltopdf.org

@@ -1,6 +1,8 @@
 # 0.3
 
-* Use wkhtmltoimage too.
+* Added wkhtmltoimage
+* Bundled binaries with buildpack
+* Refactored bin/compile
 
 # 0.2
 

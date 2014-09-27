@@ -1,3 +1,7 @@
+# 0.3
+
+* Use wkhtmltoimage too.
+
 # 0.2
 
 * Remove all of the forked ruby buildpack code. Change the buildpack to be used

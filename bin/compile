@@ -5,31 +5,30 @@ set -e
 BIN_PATH="$1/bin/"
 mkdir -p $BIN_PATH
 
-WKHTMLTOX_INSTALLER="http://sourceforge.net/projects/wkhtmltopdf/files/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb/download"
-WKHTMLTOPDF_FILE="$1/bin/wkhtmltopdf"
-WKHTMLTOIMAGE_FILE="$1/bin/wkhtmltoimage"
-WKHTMLTOX_COMPRESSED_PATH="$1/bin/wkhtmltopdf.tar.xz"
-WKHTMLTOX_PATH="$1/bin/wkhtmltox"
+WKHTML_TO_X_INSTALLER       = "http://sourceforge.net/projects/wkhtmltopdf/files/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb/download"
+WKHTML_TO_PDF_FILE          = "$1/bin/wkhtmltopdf"
+WKHTML_TO_IMAGE_FILE        = "$1/bin/wkhtmltoimage"
+WKHTML_TO_X_COMPRESSED_PATH = "$1/bin/wkhtmltox.tar.xz"
+WKHTML_TO_X_PATH            = "$1/bin/wkhtmltox"
 
-
-echo "-----> Transferring wkhtmltopdf compressed binary"
-curl -L $WKHTMLTOX_INSTALLER -o $WKHTMLTOX_COMPRESSED_PATH
+echo "-----> Downloading wkhtmltox compressed binary"
+curl -L $WKHTML_TO_X_INSTALLER -o $WKHTML_TO_X_COMPRESSED_PATH
 
 echo "-----> Decompressing binary"
-tar xJf $WKHTMLTOX_COMPRESSED_PATH --directory $BIN_PATH
+tar xJf $WKHTML_TO_X_COMPRESSED_PATH --directory $BIN_PATH
 
 echo "-----> Removing compressed binary"
-rm -f $WKHTMLTOX_COMPRESSED_PATH
+rm -f $WKHTML_TO_X_COMPRESSED_PATH
 
 echo "-----> Moving binary to the right place from wkhtmltox"
-mv $WKHTMLTOX_PATH/bin/wkhtmltopdf $BIN_PATH
-mv $WKHTMLTOX_PATH/bin/wkhtmltoimage $BIN_PATH
+mv $WKHTML_TO_X_PATH/bin/wkhtmltopdf $BIN_PATH
+mv $WKHTML_TO_X_PATH/bin/wkhtmltoimage $BIN_PATH
 
 echo "-----> Removing wkhtmltox folder"
-rm -rf $WKHTMLTOX_PATH
+rm -rf $WKHTML_TO_X_PATH
 
 echo "-----> Setting permissions"
-chmod +x $WKHTMLTOPDF_FILE
-chmod +x $WKHTMLTOIMAGE_FILE
+chmod +x $WKHTML_TO_PDF_FILE
+chmod +x $WKHTML_TO_IMAGE_FILE
 
 exit 0

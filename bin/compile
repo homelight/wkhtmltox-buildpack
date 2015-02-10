@@ -10,7 +10,7 @@ CACHE_DIR=$2
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 OPT_DIR=$(cd "$BIN_DIR/../opt"; pwd)
 
-WKHTML_TO_PDF="wkhtmltopdf"
+WKHTML_TO_PDF="wkhtmltox"
 #WKHTML_TO_IMAGE="wkhtmltoimage"
 
 mkdir -p "$1/bin"

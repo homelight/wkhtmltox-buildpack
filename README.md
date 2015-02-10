@@ -10,8 +10,8 @@ This is a [Heroku buildpack][0] for bundling a compatible [wkhtmltopdf][1] and [
 
 ## Usage
 Add the following line to your ```.buildpacks``` file
-```ruby
-'https://github.com/homelight/wkhtmltox-buildpack.git'
+```bash
+https://github.com/homelight/wkhtmltox-buildpack.git
 ```
 
 Please note that this buildpack is only compatible with the cedar-14

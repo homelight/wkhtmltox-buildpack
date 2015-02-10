@@ -15,9 +15,8 @@ WKHTML_TO_PDF="wkhtmltopdf"
 
 mkdir -p "$1/bin"
 
-echo "-----> Copying wkhtmltopdf and wkhtmltoimage"
-cp "$OPT_DIR/$WKHTML_TO_PDF" "$1/bin/"
-#cp "$OPT_DIR/$WKHTML_TO_IMAGE" "bin/"
+echo "-----> Unpacking wkhtmltopdf"
+dpkg -x "$OPT_DIR/$WKHTML_TO_PDF" "$1/bin/"
 
 echo "-----> Building runtime environment"
 chmod +x "$1/bin/$WKHTML_TO_PDF"

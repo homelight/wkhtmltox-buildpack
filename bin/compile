@@ -2,7 +2,7 @@
 # bin/compile <build-dir> <cache-dir>
 
 set -e
-set -o pipefail
+#set -o pipefail
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -13,17 +13,16 @@ OPT_DIR=$(cd "$BIN_DIR/../opt"; pwd)
 WKHTML_TO_PDF="wkhtmltopdf"
 #WKHTML_TO_IMAGE="wkhtmltoimage"
 
-cd $BUILD_DIR
-
-mkdir -p bin
+mkdir -p "$1/bin"
 
 echo "-----> Copying wkhtmltopdf and wkhtmltoimage"
-cp "$OPT_DIR/$WKHTML_TO_PDF" "bin/"
+cp "$OPT_DIR/$WKHTML_TO_PDF" "$1/bin/"
 #cp "$OPT_DIR/$WKHTML_TO_IMAGE" "bin/"
 
 echo "-----> Building runtime environment"
-chmod +x "bin/$WKHTML_TO_PDF"
+chmod +x "$1/bin/$WKHTML_TO_PDF"
 #chmod +x "bin/$WKHTML_TO_IMAGE"
 
-mkdir -p .profile.d
-echo "PATH=$PATH:$HOME/bin" > .profile.d/wkhtmltox.sh
+#mkdir -p .profile.d
+#echo "PATH=$PATH:$HOME/bin" > .profile.d/wkhtmltox.sh
+exit 0

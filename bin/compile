@@ -20,9 +20,44 @@ dpkg -x "$OPT_DIR/$WKHTML_TO_PDF" "$1/bin/$WKHTML_TO_PDF"
 
 echo "-----> Building runtime environment"
 chmod 777 "$1/bin/$WKHTML_TO_PDF/usr/local/bin/$WKHTML_TO_PDF"
-cp "$1/bin/$WKHTML_TO_PDF/usr/local/bin/$WKHTML_TO_PDF" "$1/bin/$WKHTML_TO_PDF"
-echo "Binary Unpacked to $1/bin/$WKHTML_TO_PDF"
+mv "$1/bin/$WKHTML_TO_PDF/usr/local/bin/$WKHTML_TO_PDF" "$1/bin/$WKHTML_TO_PDF"
+
+echo "-----> Cleaning up"
+rm -rf 
 
 #mkdir -p .profile.d
 #echo "PATH=$PATH:$HOME/bin" > .profile.d/wkhtmltox.sh
+exit 0
+
+
+set -e
+
+BIN_PATH="$1/bin"
+TMP_PATH="$1/tmp"
+mkdir -p $BIN_PATH $TMP_PATH
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+OPT_DIR=$(cd "$BIN_DIR/../opt"; pwd)
+
+
+
+
+WKHTMLTOPDF_PKG="$OPT_DIR/wkhtmltopdf"
+WKHTMLTOPDF_PATH="$TMP_PATH/wkhtmltopdf"
+WKHTMLTOPDF_BINARIES="$WKHTMLTOPDF_PATH/usr/local/bin"
+
+echo "-----> Downloading wkhtmltopdf Debian package"
+curl -L $WKHTMLTOPDF_URL -o $WKHTMLTOPDF_PKG
+
+echo "-----> Unpacking Debian package"
+dpkg -x $WKHTMLTOPDF_PKG $WKHTMLTOPDF_PATH
+
+echo "-----> Setting permissions"
+chmod +x $WKHTMLTOPDF_BINARIES/*
+
+echo "-----> Moving binaries to the right place"
+mv $WKHTMLTOPDF_BINARIES/* $BIN_PATH/
+
+echo "-----> Cleaning up"
+rm -rf $WKHTMLTOPDF_PKG $WKHTMLTOPDF_PATH
+
 exit 0

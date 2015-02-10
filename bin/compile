@@ -10,7 +10,7 @@ CACHE_DIR=$2
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 OPT_DIR=$(cd "$BIN_DIR/../opt"; pwd)
 
-WKHTML_TO_PDF="wkhtmltox"
+WKHTML_TO_PDF="wkhtmltopdf"
 #WKHTML_TO_IMAGE="wkhtmltoimage"
 
 mkdir -p "$1/bin"
@@ -19,7 +19,8 @@ echo "-----> Unpacking wkhtmltopdf"
 dpkg -x "$OPT_DIR/$WKHTML_TO_PDF" "$1/bin/$WKHTML_TO_PDF"
 
 echo "-----> Building runtime environment"
-chmod 777 "$1/bin/$WKHTML_TO_PDF"
+chmod 777 "$1/bin/$WKHTML_TO_PDF/usr/local/bin/$WKHTML_TO_PDF"
+cp "$1/bin/$WKHTML_TO_PDF/usr/local/bin/$WKHTML_TO_PDF" "$1/bin/$WKHTML_TO_PDF"
 echo "Binary Unpacked to $1/bin/$WKHTML_TO_PDF"
 
 #mkdir -p .profile.d

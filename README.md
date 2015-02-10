@@ -5,17 +5,13 @@ This is a [Heroku buildpack][0] for bundling a compatible [wkhtmltopdf][1] and [
 ## Versions
 
 * Buildpack:   0.2
-* WKHTMLTOPDF: 0.12.1
-* WKHTMLTOIMAGE: 0.12.1
+* WKHTMLTOPDF: 0.12.2.1
+* WKHTMLTOIMAGE: 0.12.2.1
 
 ## Usage
-
-```bash
-$ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
-$ echo 'https://github.com/versacommerce/wkhtmltox-buildpack.git' >> .buildpacks
-$ echo 'https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/ruby.tgz' >> .buildpacks
-$ git add .buildpacks
-$ git commit -m 'Add multi-buildpack'
+Add the following line to your ```.buildpacks``` file
+```ruby
+'https://github.com/homelight/wkhtmltox-buildpack.git'
 ```
 
 Please note that this buildpack is only compatible with the cedar-14
